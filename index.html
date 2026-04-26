@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YARD — L'art à Porter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-logo">
+        <span class="logo-y">Y</span><span class="logo-a">A</span><span class="logo-r">R</span><span class="logo-d">D</span>
+        <span class="logo-tagline">L'art à porter</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Accueil</a></li>
+        <li><a href="#concept" class="nav-link">Le Concept</a></li>
+        <li><a href="#configurateur" class="nav-link">Configurateur</a></li>
+        <li><a href="#galerie" class="nav-link">Galerie</a></li>
+    </ul>
+    <div class="nav-actions">
+        <button class="nav-icon-btn" id="search-btn" title="Rechercher">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="wishlist-btn" title="Favoris">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <button class="nav-icon-btn cart-btn" id="cart-btn" title="Panier">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="nav-cta" id="nav-cta-btn">Commander</button>
+    </div>
+    <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+    <ul>
+        <li><a href="#hero" onclick="closeMobileMenu()">Accueil</a></li>
+        <li><a href="#concept" onclick="closeMobileMenu()">Le Concept</a></li>
+        <li><a href="#configurateur" onclick="closeMobileMenu()">Configurateur</a></li>
+        <li><a href="#galerie" onclick="closeMobileMenu()">Galerie</a></li>
+    </ul>
+</div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+        <h2>Mon Panier</h2>
+        <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <div class="cart-empty" id="cart-empty">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <p>Votre panier est vide</p>
+            <span>Ajoutez une pièce YARD pour commencer</span>
+        </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+        <div class="cart-total">
+            <span>Total</span>
+            <span id="cart-total-price">0,00 €</span>
+        </div>
+        <button class="checkout-btn">Passer commande</button>
+        <p class="cart-note">Livraison offerte dès 200€ · Retours gratuits 30 jours</p>
+    </div>
+</aside>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-eyebrow">Nouvelle Collection SS25</div>
+        <h1 class="hero-title">
+            <span class="hero-title-line">Habillez</span>
+            <span class="hero-title-line accent">la perspective.</span>
+        </h1>
+        <p class="hero-desc">Le vêtement comme œuvre d'art totale. Inspiré des paysages de David Hockney, chaque pièce YARD se déconstruit sur votre corps.</p>
+        <div class="hero-actions">
+            <a href="#configurateur" class="btn-primary">Personnaliser ma veste</a>
+            <a href="#concept" class="btn-ghost">Découvrir le concept →</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-image-frame">
+            <img src="Veste.jpg" alt="Veste YARD" class="hero-jacket">
+            <div class="hero-badge">
+                <span class="badge-text">Art<br>à porter</span>
+            </div>
+        </div>
+        <div class="hero-color-dots">
+            <span class="dot dot-cyan"></span>
+            <span class="dot dot-magenta"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- CONCEPT STRIP -->
+<section class="concept-strip" id="concept">
+    <div class="strip-track">
+        <span>YARD — L'ART À PORTER</span>
+        <span class="strip-dot">◆</span>
+        <span>INSPIRÉ DE DAVID HOCKNEY</span>
+        <span class="strip-dot">◆</span>
+        <span>HABILLEZ LA PERSPECTIVE</span>
+        <span class="strip-dot">◆</span>
+        <span>ÉDITION LIMITÉE SS25</span>
+        <span class="strip-dot">◆</span>
+        <span>YARD — L'ART À PORTER</span>
+        <span class="strip-dot">◆</span>
+        <span>INSPIRÉ DE DAVID HOCKNEY</span>
+        <span class="strip-dot">◆</span>
+        <span>HABILLEZ LA PERSPECTIVE</span>
+        <span class="strip-dot">◆</span>
+        <span>ÉDITION LIMITÉE SS25</span>
+        <span class="strip-dot">◆</span>
+    </div>
+</section>
+
+<!-- CONCEPT SECTION -->
+<section class="concept-section">
+    <div class="concept-grid">
+        <div class="concept-text">
+            <div class="section-label">Notre philosophie</div>
+            <h2 class="section-title">Le monde n'est pas une image fixe. Nos styles non plus.</h2>
+            <p>Pour David Hockney, l'œil humain est toujours en mouvement. YARD déconstruit ses paysages — les piscines californiennes, les forêts du Yorkshire — pour les intégrer directement dans la coupe et la structure du textile.</p>
+            <p>Chaque partie du vêtement correspond à un point de vue différent. C'est le mouvement naturel de votre corps qui complète l'image.</p>
+            <div class="concept-stats">
+                <div class="stat">
+                    <span class="stat-num">01</span>
+                    <span class="stat-label">Artiste de référence</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">∞</span>
+                    <span class="stat-label">Perspectives possibles</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">100</span>
+                    <span class="stat-label">% Édition limitée</span>
+                </div>
+            </div>
+        </div>
+        <div class="concept-visual">
+            <div class="color-palette-display">
+                <div class="palette-swatch" style="background:#28abe3" data-name="Clarté Californienne"></div>
+                <div class="palette-swatch" style="background:#e7237f" data-name="Fil Conducteur"></div>
+                <div class="palette-swatch" style="background:#faea26" data-name="Vision Numérique"></div>
+                <div class="palette-swatch" style="background:#8ec044" data-name="Yorkshire Sauvage"></div>
+                <div class="palette-swatch" style="background:#a087be" data-name="Profondeur & Ombre"></div>
+                <div class="palette-swatch" style="background:#1a1a1b" data-name="Architecture Textile"></div>
+            </div>
+            <div class="palette-label">Palette YARD — extraite de l'univers pictural de Hockney</div>
+        </div>
+    </div>
+</section>
+
+<!-- CONFIGURATEUR -->
+<section class="configurateur-section" id="configurateur">
+    <div class="config-header">
+        <div class="section-label">Personnalisation</div>
+        <h2 class="section-title">Créez votre veste unique</h2>
+        <p class="config-subtitle">Choisissez votre couleur, votre taille. Chaque pièce est fabriquée à la commande.</p>
+    </div>
+
+    <div class="config-main">
+        <!-- VIEWER -->
+        <div class="product-viewer">
+            <div class="viewer-inner" id="image-container">
+                <img id="background-image" src="Veste.jpg" alt="Veste YARD">
+                <svg class="color-changing-svg" id="product-svg" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+                    <g id="veste-complete">
+                        <path d="M612.44,556.28s106.7-36.24,126.25-35.89c0,0,37.7-25.83,54.45-48.87,0,0-11.87,56.9-20.59,66.32,0,0-15.71,17.45-54.1,30.37,0,0-75.4,17.8-112.4,47.12l-8.01-37.31,14.4-21.74Z"/>
+                        <path d="M384.09,409.47s16.66-4.86,50.31,5.83l36.34,9.82s17.69,34.31,19.93,34.89c0,0,15.66,28.36,24.21,38.66,0,0-25.65-.39-72.49-15.74,0,0-18.85-6.41-27.79-4.86l-28.96-56.36-1.55-12.24Z"/>
+                        <path d="M439.81,362.21s-53.44-7.92-65.69-5.98c0,0-9.03-47.96-11.4-51.4,0,0,34.19,1.51,43.87,4.52,0,0,35.06,6.11,63.12,21.44l-29.9,31.42Z"/>
+                        <path d="M292.18,718.25s10.46-13.65,85.52,3.18c0,0,12.74,3.41,15.47,7.96l2.27-37.07s-12.28-15.47-74.6-18.42c0,0-22.74-.91-24.79,2.27,0,0-1.82,41.17-3.87,42.08Z"/>
+                        <path d="M630.65,421.7s3.76-.34,26.86,9.41c0,0,39.69,15.23,41.06,17.45,0,0-46.71,65.01-53.04,70.15l-33.09,37.57-14.4,21.74s-4.18-6.95-2.46-15.51c0,0,13.17-60.65,14.54-65.1,0,0,18.82-72.88,20.53-75.71Z"/>
+                        <path d="M528.51,280.74s-7.18-10.2-46.1,38.17c0,0-5.52,11.62-48,32,0,0,51.93,109.25,56.28,109.1s30.72-16.64,69.09-22.93c0,0-25.01-105.93-31.26-156.34Z"/>
+                    </g>
+                </svg>
+                <div class="viewer-tag">
+                    <span>YARD</span>
+                    <span>SS25</span>
+                </div>
+            </div>
+            <div class="viewer-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Prévisualisation en temps réel
+            </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="product-controls">
+            <div class="product-name">
+                <h3 id="product-title">Veste YARD — Édition Hockney</h3>
+                <div class="product-ref" id="product-ref">Réf. YD-VH-001 · Courte · Édition limitée</div>
+            </div>
+
+            <div class="product-price-block">
+                <span class="price-main">289,00 €</span>
+                <span class="price-note">Fabrication à la commande · Livraison 3–5 semaines</span>
+            </div>
+
+            <div class="control-divider"></div>
+
+            <!-- COULEUR PRESET -->
+            <div class="control-group">
+                <div class="control-label">
+                    Couleur
+                    <span class="color-name-display" id="color-name-display">Orange Hockney</span>
+                </div>
+                <div class="preset-colors">
+                    <button class="preset-color active" data-color="ff7f00" data-name="Orange Hockney" style="background:#ff7f00" title="Orange Hockney"></button>
+                    <button class="preset-color" data-color="28abe3" data-name="Clarté Californienne" style="background:#28abe3" title="Clarté Californienne"></button>
+                    <button class="preset-color" data-color="e7237f" data-name="Fil Conducteur" style="background:#e7237f" title="Fil Conducteur"></button>
+                    <button class="preset-color" data-color="faea26" data-name="Vision Numérique" style="background:#faea26" title="Vision Numérique"></button>
+                    <button class="preset-color" data-color="8ec044" data-name="Yorkshire Sauvage" style="background:#8ec044" title="Yorkshire Sauvage"></button>
+                    <button class="preset-color" data-color="a087be" data-name="Ombre Lumineuse" style="background:#a087be" title="Ombre Lumineuse"></button>
+                    <button class="preset-color" data-color="1a1a1b" data-name="Architecture Textile" style="background:#1a1a1b" title="Architecture Textile"></button>
+                    <button class="preset-color preset-custom" id="custom-color-btn" title="Couleur personnalisée">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                    </button>
+                </div>
+                <div class="custom-color-row" id="custom-color-row" style="display:none">
+                    <label class="custom-color-label">Couleur sur mesure :</label>
+                    <input class="jscolor" id="custom-jscolor" value="ff7f00" style="width:120px;height:36px;">
+                </div>
+            </div>
+
+            <div class="control-divider"></div>
+
+            <!-- MODÈLE -->
+            <div class="control-group">
+                <div class="control-label">
+                    Modèle
+                    <span class="color-name-display" id="model-name-display">Veste Courte</span>
+                </div>
+                <div class="model-selector">
+                    <button class="model-btn active" data-model="courte" data-img="Veste.jpg" data-label="Veste Courte">
+                        <div class="model-btn-img-wrap">
+                            <img src="Veste.jpg" alt="Veste Courte">
+                        </div>
+                        <span>Courte</span>
+                    </button>
+                    <button class="model-btn" data-model="sansmanche" data-img="veste-sansmanche.jpg" data-label="Sans Manches">
+                        <div class="model-btn-img-wrap">
+                            <img src="veste-sansmanche.jpg" alt="Sans Manches">
+                        </div>
+                        <span>Sans Manches</span>
+                    </button>
+                    <button class="model-btn" data-model="longue" data-img="veste-longue.jpg" data-label="Veste Longue">
+                        <div class="model-btn-img-wrap">
+                            <img src="veste-longue.jpg" alt="Veste Longue">
+                        </div>
+                        <span>Longue</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-divider"></div>
+
+            <!-- TAILLE -->
+            <div class="control-group">
+                <div class="control-label">
+                    Taille
+                    <a href="#" class="size-guide-link">Guide des tailles →</a>
+                </div>
+                <div class="size-selector">
+                    <button class="size-btn" data-size="XS">XS</button>
+                    <button class="size-btn" data-size="S">S</button>
+                    <button class="size-btn selected" data-size="M">M</button>
+                    <button class="size-btn" data-size="L">L</button>
+                    <button class="size-btn" data-size="XL">XL</button>
+                </div>
+            </div>
+
+            <div class="control-divider"></div>
+
+            <!-- QUANTITE -->
+            <div class="control-group control-inline">
+                <div class="control-label">Quantité</div>
+                <div class="qty-selector">
+                    <button class="qty-btn" id="qty-minus">−</button>
+                    <span class="qty-value" id="qty-value">1</span>
+                    <button class="qty-btn" id="qty-plus">+</button>
+                </div>
+            </div>
+
+            <div class="control-divider"></div>
+
+            <!-- ACTIONS -->
+            <div class="product-actions">
+                <button class="btn-add-cart" id="add-to-cart-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Ajouter au panier
+                </button>
+                <button class="btn-wishlist-add" id="wishlist-add-btn" title="Ajouter aux favoris">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+
+            <!-- GARANTIES -->
+            <div class="product-guarantees">
+                <div class="guarantee">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Pièce certifiée artisanale
+                </div>
+                <div class="guarantee">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Fabrication en France
+                </div>
+                <div class="guarantee">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Retours 30 jours
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOUTIQUE PRÊT-À-PORTER -->
+<section class="boutique-section" id="galerie">
+    <div class="boutique-header">
+        <div class="section-label">Collection SS25</div>
+        <h2 class="section-title">Vestes prépersonnalisées</h2>
+        <p class="boutique-subtitle">Quatre coloris exclusifs, inspirés directement de la palette de David Hockney. Prêtes à être portées.</p>
+    </div>
+
+    <div class="boutique-grid">
+
+        <!-- CARD 1 — Original -->
+        <div class="boutique-card" data-color-name="Original Hockney" data-color-hex="ff7f00" data-filter="none">
+            <div class="boutique-card-img-wrap">
+                <img src="Veste.jpg" alt="Veste Original Hockney" class="boutique-img">
+                <div class="boutique-badge">Bestseller</div>
+                <button class="boutique-wishlist" aria-label="Favoris">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+            <div class="boutique-card-info">
+                <div class="boutique-color-dot" style="background:#ff7f00"></div>
+                <div class="boutique-card-text">
+                    <h3 class="boutique-name">Veste YARD</h3>
+                    <p class="boutique-coloris">Original Hockney</p>
+                </div>
+                <div class="boutique-price">289 €</div>
+            </div>
+            <div class="boutique-sizes">
+                <button class="bsize-btn" data-size="XS">XS</button>
+                <button class="bsize-btn" data-size="S">S</button>
+                <button class="bsize-btn bsize-selected" data-size="M">M</button>
+                <button class="bsize-btn" data-size="L">L</button>
+                <button class="bsize-btn" data-size="XL">XL</button>
+            </div>
+            <button class="boutique-add-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Ajouter au panier
+            </button>
+        </div>
+
+        <!-- CARD 2 — Clarté Californienne -->
+        <div class="boutique-card" data-color-name="Clarté Californienne" data-color-hex="28abe3" data-filter="hue-rotate(40deg) saturate(1.2)">
+            <div class="boutique-card-img-wrap">
+                <img src="Veste.jpg" alt="Veste Clarté Californienne" class="boutique-img" style="filter:hue-rotate(40deg) saturate(1.2)">
+                <div class="boutique-badge boutique-badge--new">New</div>
+                <button class="boutique-wishlist" aria-label="Favoris">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+            <div class="boutique-card-info">
+                <div class="boutique-color-dot" style="background:#28abe3"></div>
+                <div class="boutique-card-text">
+                    <h3 class="boutique-name">Veste YARD</h3>
+                    <p class="boutique-coloris">Clarté Californienne</p>
+                </div>
+                <div class="boutique-price">300 €</div>
+            </div>
+            <div class="boutique-sizes">
+                <button class="bsize-btn" data-size="XS">XS</button>
+                <button class="bsize-btn" data-size="S">S</button>
+                <button class="bsize-btn bsize-selected" data-size="M">M</button>
+                <button class="bsize-btn" data-size="L">L</button>
+                <button class="bsize-btn" data-size="XL">XL</button>
+            </div>
+            <button class="boutique-add-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Ajouter au panier
+            </button>
+        </div>
+
+        <!-- CARD 3 — Fil Conducteur -->
+        <div class="boutique-card" data-color-name="Fil Conducteur" data-color-hex="e7237f" data-filter="hue-rotate(200deg) saturate(0.8) brightness(1.1)">
+            <div class="boutique-card-img-wrap">
+                <img src="Veste.jpg" alt="Veste Fil Conducteur" class="boutique-img" style="filter:hue-rotate(200deg) saturate(0.8) brightness(1.1)">
+                <button class="boutique-wishlist" aria-label="Favoris">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+            <div class="boutique-card-info">
+                <div class="boutique-color-dot" style="background:#e7237f"></div>
+                <div class="boutique-card-text">
+                    <h3 class="boutique-name">Veste YARD</h3>
+                    <p class="boutique-coloris">Fil Conducteur</p>
+                </div>
+                <div class="boutique-price">350 €</div>
+            </div>
+            <div class="boutique-sizes">
+                <button class="bsize-btn" data-size="XS">XS</button>
+                <button class="bsize-btn" data-size="S">S</button>
+                <button class="bsize-btn bsize-selected" data-size="M">M</button>
+                <button class="bsize-btn" data-size="L">L</button>
+                <button class="bsize-btn" data-size="XL">XL</button>
+            </div>
+            <button class="boutique-add-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Ajouter au panier
+            </button>
+        </div>
+
+        <!-- CARD 4 — Yorkshire Sauvage -->
+        <div class="boutique-card" data-color-name="Yorkshire Sauvage" data-color-hex="8ec044" data-filter="hue-rotate(280deg) saturate(1.1)">
+            <div class="boutique-card-img-wrap">
+                <img src="Veste.jpg" alt="Veste Yorkshire Sauvage" class="boutique-img" style="filter:hue-rotate(280deg) saturate(1.1)">
+                <div class="boutique-badge boutique-badge--limited">Limité</div>
+                <button class="boutique-wishlist" aria-label="Favoris">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+            <div class="boutique-card-info">
+                <div class="boutique-color-dot" style="background:#8ec044"></div>
+                <div class="boutique-card-text">
+                    <h3 class="boutique-name">Veste YARD</h3>
+                    <p class="boutique-coloris">Yorkshire Sauvage</p>
+                </div>
+                <div class="boutique-price">500 €</div>
+            </div>
+            <div class="boutique-sizes">
+                <button class="bsize-btn" data-size="XS">XS</button>
+                <button class="bsize-btn" data-size="S">S</button>
+                <button class="bsize-btn bsize-selected" data-size="M">M</button>
+                <button class="bsize-btn" data-size="L">L</button>
+                <button class="bsize-btn" data-size="XL">XL</button>
+            </div>
+            <button class="boutique-add-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Ajouter au panier
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <span style="color:#28abe3">Y</span><span style="color:#e7237f">A</span><span style="color:#faea26">R</span><span style="color:#8ec044">D</span>
+            </div>
+            <p class="footer-tagline">L'art à porter</p>
+            <p class="footer-desc">Vêtements inspirés de l'univers pictural de David Hockney. Chaque pièce est une œuvre d'art à porter.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Boutique</h4>
+                <ul>
+                    <li><a href="#configurateur">Personnaliser</a></li>
+                    <li><a href="#galerie">Lookbook</a></li>
+                    <li><a href="#">Nouvelles pièces</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>La Marque</h4>
+                <ul>
+                    <li><a href="#concept">Notre concept</a></li>
+                    <li><a href="#">David Hockney</a></li>
+                    <li><a href="#">Fabrication</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Service</h4>
+                <ul>
+                    <li><a href="#">Livraison & Retours</a></li>
+                    <li><a href="#">Guide des tailles</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2025 YARD — Julia Lagache. SAE Institute.</span>
+        <span>Tous droits réservés.</span>
+    </div>
+</footer>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toast-msg">Ajouté au panier !</span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
